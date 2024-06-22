@@ -1,0 +1,243 @@
+/* Basic styles */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+   background-color: #1A2C38;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+   background-color: #1A2C38;
+    border-radius: 11px;
+    text-align: center;
+}
+
+#logo {
+    width: 128px;
+    height: auto;
+  margin-top: 29px;
+    justify-content: center;
+}
+
+h1 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+button {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: bold;
+    width: 100%;
+    padding: 11px;
+    margin-top: 11px;
+    font-size: 20px;
+   background-color: #00E701;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#generate-form {
+  display: none;
+  padding-top: -5px;
+}
+
+#login-form {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+
+#credits {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    z-index: 10;
+}
+
+#plan-details {
+    margin-top: -19px;
+    padding-top: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    z-index: 0;
+}
+
+input[type="text"]::placeholder {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    opacity: 65%;
+    font-size: 16px;
+    color: #fff;
+}
+
+input[type="text"] {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+   background-color: #2F4553;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#generate-form {
+    margin-top: 20px;
+}
+
+#log {
+    margin-top: 45px;
+    font-size: 14px;
+   background-color: #00E701;
+    margin-bottom: 14px;
+}
+
+ #spt {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 305px;
+   font-size: 18px;
+   color: #fff;
+   justify-content: center;
+   text-align: center;
+   padding: 11px;
+ }
+
+#key {
+    font-size: 14px;
+    color: #00E701;
+}
+
+.key {
+    margin-top: 14px;
+}
+
+#w {
+    font-size: 14px;
+    color: #fff;
+}
+
+
+/* Responsive styles */
+@media (max-width: 375px) {
+    .container {
+        padding: 15px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+
+    table th, table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    #credits, #plan-details {
+        font-size: 16px;
+    }
+
+    input[type="text"] {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+
+    .developer-info {
+        font-size: 0.9rem;
+    }
+
+
+.mine-game-container {
+  display: grid;
+  grid-template-columns: repeat(5, 50px);
+  grid-gap: 5px;
+  margin-top: 29px;
+  margin-bottom: 20px;
+  border-radius: 7px;
+  background-color: #1A2C38;
+  justify-content: center;
+  align-items: center;
+}
+
+.mine-game-container .box {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  border-radius: 7px;
+  justify-content: center;
+  align-items: center;
+  background-color: #2F4553;
+}
+
+  
+  
+.mine-game-container .diamond {
+  background: url('dia.svg') no-repeat center center;
+  background-size: 38px;
+   background-color: #071824;
+}
+
+
+
+#countdown-text {
+    font-size: 13px;
+}
+
+    #confirmButtonText {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: bold;
+        width: 100%;
+        padding: 11px;
+        margin-top: 11px;
+        font-size: 20px;
+       background-color: #00E701;
+        color: #fff;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    
+    .no-border-button {
+      border: none !important;
+    }
+
+    #credit {
+        height: 44px;
+        width: 100%;
+        font-size: 11px;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding-bottom: 10px;
+    }
+
+    .developer-info a {
+        color: #fff;
+        text-decoration: none;
+        background-color: #2F4553;
+        padding: 5px 10px 9px 10px;
+        border-radius: 5px;
+    }
