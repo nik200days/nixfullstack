@@ -43,23 +43,9 @@ function showErrorNotification(message) {
     });
 }
 
-function isValidEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
-    return re.test(email.toLowerCase());
-}
-
-function isValidMobile(mobile) {
-    const re = /^\d{10}$/;
-    return re.test(mobile);
-}
 
 function login() {
   const accessKey = document.getElementById('access-key').value.trim();
-  const emailOrMobile = document.getElementById('email-or-mobile').value.trim(); // Ensure email or mobile is captured
-
-  if (!isValidEmail(emailOrMobile) && !isValidMobile(emailOrMobile)) {
-    showErrorNotification('Enter a valid email ID or mobile number to proceed.');
-    return;
   }
 
   db.collection('access_keys').doc(accessKey).get().then(doc => {
@@ -181,21 +167,6 @@ window.onload = checkLoginStatus;
 // Define a state variable to track if generating result is allowed
 let canGenerateResult = true;
 
-// Function to show credits ended popup
-function showCreditsEndedPopup() {
-  Swal.fire({
-    title: 'Credits Ended',
-    html: 'Your credits for today have ended. <br> Please consider buying our premium plan to continue using the service.',
-    showConfirmButton: true,
-    confirmButtonText: '<a href="https://example.com" target="_blank" style="color: white; text-decoration: none;">Buy Premium Plan</a>',
-    allowOutsideClick: false, // Prevent closing on outside click
-    allowEscapeKey: false, // Prevent closing with Esc key
-    willClose: () => {
-      // Set flag in localStorage to ensure popup remains shown on page reload
-      localStorage.setItem('creditsEndedPopupShown', 'true');
-    }
-  });
-}
 
 // Check if credits ended and popup was shown previously
 document.addEventListener('DOMContentLoaded', () => {
