@@ -73,7 +73,6 @@ function login() {
       if (!data.deviceUUID) {
         db.collection('access_keys').doc(accessKey).update({
           deviceUUID: currentDeviceUUID,
-          emailOrMobile: emailOrMobile // Ensure email or mobile is stored correctly
         }).then(() => {
           console.log('Device UUID updated for access key:', accessKey);
           localStorage.setItem('deviceUUID', currentDeviceUUID); // Store device UUID in localStorage
