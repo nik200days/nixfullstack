@@ -43,10 +43,8 @@ function showErrorNotification(message) {
     });
 }
 
-
 function login() {
   const accessKey = document.getElementById('access-key').value.trim();
-  }
 
   db.collection('access_keys').doc(accessKey).get().then(doc => {
     if (doc.exists) {
@@ -72,7 +70,7 @@ function login() {
       // Update device UUID if not already set
       if (!data.deviceUUID) {
         db.collection('access_keys').doc(accessKey).update({
-          deviceUUID: currentDeviceUUID,
+          deviceUUID: currentDeviceUUID
         }).then(() => {
           console.log('Device UUID updated for access key:', accessKey);
           localStorage.setItem('deviceUUID', currentDeviceUUID); // Store device UUID in localStorage
@@ -165,7 +163,6 @@ window.onload = checkLoginStatus;
 
 // Define a state variable to track if generating result is allowed
 let canGenerateResult = true;
-
 
 // Check if credits ended and popup was shown previously
 document.addEventListener('DOMContentLoaded', () => {
@@ -296,3 +293,4 @@ function generateMineResult() {
 
   return { mines, diamonds };
 }
+
