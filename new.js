@@ -1,12 +1,12 @@
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB3T149047eNkEN7L9WAdclSkA4owR93h4",
-  authDomain: "freeorcle.firebaseapp.com",
-  projectId: "freeorcle",
-  storageBucket: "freeorcle.appspot.com",
-  messagingSenderId: "13265591895",
-  appId: "1:13265591895:web:76f24a19f458f6ef198d12",
-  measurementId: "G-YNWD1GR7SV"
+  apiKey: "AIzaSyCetxYahB16d2ik5JTrVZpFZYBsrd48YLU",
+  authDomain: "orcaleprm.firebaseapp.com",
+  projectId: "orcaleprm",
+  storageBucket: "orcaleprm.appspot.com",
+  messagingSenderId: "97028714002",
+  appId: "1:97028714002:web:943624b95a6ece1f6f72cb",
+  measurementId: "G-ZYD8H0TYFJ"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
