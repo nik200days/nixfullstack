@@ -82,7 +82,7 @@ function login() {
   const emailOrMobileOrUsername = document.getElementById('email-or-mobile').value.trim();
 
   if (!isValidEmail(emailOrMobileOrUsername) && !isValidMobile(emailOrMobileOrUsername) && !isValidUsername(emailOrMobileOrUsername)) {
-    showErrorNotification('Enter a valid email ID, mobile number, or username to proceed.');
+    showErrorNotification('Enter a valid username to login.');
     return;
   }
 
@@ -199,16 +199,47 @@ function checkLoginStatus() {
   }
 }
 
+// Function to show credits ended notification
+function showCreditsEndedNotification() {
+  Swal.fire({
+    icon: 'info',
+    title: 'Credits Ended',
+    text: 'Your credits for today have ended. You will get new credits tomorrow.',
+    showConfirmButton: false,
+    timer: 3000
+  });
+}
+
+// Function to show first result message popup
+function showFirstResultPopup() {
+  // Check if popup has already been shown
+  if (!localStorage.getItem('resultPopupShown')) {
+    // Show popup for the first result
+    Swal.fire({
+      icon: 'info',
+      title: 'Use 2X On Loss',
+      text: 'Use 2X Amount on loss',
+      showConfirmButton: false,
+      timer: 4700
+    });
+
+    // Set flag in localStorage to indicate popup has been shown
+    localStorage.setItem('resultPopupShown', 'true');
+  }
+}
 
 // Event listener for Get Result button
 getResultButton.addEventListener('click', () => {
   const currentKeyData = currentKeyDoc.data();
 
   if (currentKeyData.credits <= 0) {
-    showCreditsEndedPopup();
+    showCreditsEndedNotification();
     localStorage.setItem('creditsEndedPopupShown', 'true');
     return;
   }
+
+  // Show first result message popup
+  showFirstResultPopup();
 
   // Disable the button and show countdown text
   getResultButton.style.display = 'none';
@@ -240,12 +271,16 @@ getResultButton.addEventListener('click', () => {
         db.collection('users').doc(currentKeyDoc.id).get().then(doc => {
           currentKeyDoc = doc;
           creditsDisplay.innerText = `Credits: ${newCredits}`;
+          if (newCredits === 0) {
+            showCreditsEndedNotification();
+            localStorage.setItem('creditsEndedPopupShown', 'true');
+          }
         });
       }).catch(error => {
         console.error("Error updating credits:", error);
       });
     } else {
-      showCreditsEndedPopup();
+      showCreditsEndedNotification();
       localStorage.setItem('creditsEndedPopupShown', 'true');
     }
 
@@ -286,5 +321,19 @@ function generateMineResult() {
 
 // Check login status on page load
 window.onload = function() {
+  if (!currentUserEmailOrMobile) {
+    Swal.fire({
+      title: 'Instructions',
+      html: '<ol style="text-align: left;"><li>Register New Account <a href="https://stake.com/?c=STAKE100HK" target="_blank" style="font-weight: 700;">Stake VIP Link</a></li><br><li>Deposit Min- ₹1000</li><br><li>Enter New Registered Username</li></ol>',
+      confirmButtonText: 'Got it!',
+      icon: 'info',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      customClass: {
+        container: 'swal-text-left'
+      }
+    });
+  }
+
   checkLoginStatus();
 };
