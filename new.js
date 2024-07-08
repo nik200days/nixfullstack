@@ -178,9 +178,9 @@ getResultButton.addEventListener('click', () => {
     // Instead of showing an error, hide the button and show countdown text
     getResultButton.style.display = 'none';
     const countdownDisplay = document.getElementById('countdown-text');
-    countdownDisplay.innerText = 'Please wait 20 seconds for the next result...';
+    countdownDisplay.innerText = 'Please wait 10 seconds for the next result...';
 
-    let countdown = 20;
+    let countdown = 10;
     const countdownInterval = setInterval(() => {
       countdown--;
       countdownDisplay.innerText = `Please wait ${countdown} seconds for the next result...`;
@@ -201,7 +201,7 @@ getResultButton.addEventListener('click', () => {
 
   // Check if there are enough credits
   if (currentKeyData.credits <= 0) {
-    showCreditsEndedPopup();
+    showCreditsEndedNotification();
     localStorage.setItem('creditsEndedPopupShown', 'true'); // Store in localStorage
     return;
   }
@@ -237,12 +237,16 @@ getResultButton.addEventListener('click', () => {
         db.collection('access_keys').doc(currentKeyDoc.id).get().then(doc => {
           currentKeyDoc = doc;
           creditsDisplay.innerText = `Credits: ${newCredits}`;
+          if (newCredits === 0) {
+            showCreditsEndedNotification();
+            localStorage.setItem('creditsEndedPopupShown', 'true'); // Store in localStorage
+          }
         });
       }).catch(error => {
         console.error("Error updating credits:", error);
       });
     } else {
-      showCreditsEndedPopup();
+      showCreditsEndedNotification();
       localStorage.setItem('creditsEndedPopupShown', 'true'); // Store in localStorage
     }
 
@@ -250,14 +254,14 @@ getResultButton.addEventListener('click', () => {
     canGenerateResult = false;
     setTimeout(() => {
       canGenerateResult = true;
-    }, 20000); // 20 seconds
+    }, 10000); // 10 seconds
 
     // Hide the Get Result button and show countdown text
     getResultButton.style.display = 'none';
     const countdownDisplay = document.getElementById('countdown-text');
-    countdownDisplay.innerText = 'Please wait 20 seconds for the next result...';
+    countdownDisplay.innerText = 'Please wait 10 seconds for the next result...';
 
-    let countdown = 20;
+    let countdown = 10;
     const countdownInterval = setInterval(() => {
       countdown--;
       countdownDisplay.innerText = `Please wait ${countdown} seconds for the next result...`;
@@ -272,6 +276,17 @@ getResultButton.addEventListener('click', () => {
 
   }, 731); // Adjust this delay if necessary
 });
+
+function showCreditsEndedNotification() {
+    Swal.fire({
+        icon: 'info',
+        title: 'Credits Ended',
+        text: 'Your credits for today have ended. You will get new credits tomorrow.',
+        showConfirmButton: false,
+        timer: 3000
+    });
+}
+
 
 function generateMineResult() {
   const mineCount = 3;
@@ -293,4 +308,3 @@ function generateMineResult() {
 
   return { mines, diamonds };
 }
-
