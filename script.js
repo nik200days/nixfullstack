@@ -27,7 +27,7 @@ let currentDeviceUUID = localStorage.getItem('deviceUUID') || null;
 
 // Constants for initial credits and expiry days
 const initialCredits = 20;
-const initialExpiryDays = 5;
+const initialExpiryDays = 2;
 
 // Function to generate a UUID
 function generateUUID() {
