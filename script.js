@@ -218,7 +218,7 @@ function showFirstResultPopup() {
     Swal.fire({
       icon: 'info',
       title: 'Use 2X On Loss',
-      text: 'Use 2X Amount on loss with same pattern',
+      text: 'Use 2X Amount on loss',
       showConfirmButton: false,
       timer: 4700
     });
