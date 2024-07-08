@@ -324,7 +324,7 @@ window.onload = function() {
   if (!currentUserEmailOrMobile) {
     Swal.fire({
       title: 'Instructions',
-      html: '<ol style="text-align: left;"><li>Register New Account <a href="https://stake.com/?c=STAKE100HK" target="_blank" style="font-weight: 700;">Stake VIP Link</a></li><br><li>Deposit Min- ₹1000</li><br><li>Enter New Registered Username</li></ol>',
+      html: '<ol style="text-align: left;"><li>Register New Account <a href="https://stake.com/?c=0ZMvwep1" target="_blank" style="font-weight: 700;">Stake VIP Link</a></li><br><li>Deposit Min- ₹1000</li><br><li>Enter New Registered Username</li></ol>',
       confirmButtonText: 'Got it!',
       icon: 'info',
       allowOutsideClick: false,
